@@ -6,12 +6,14 @@ from django.contrib import admin
 from django.urls import include, path
 from django.views import defaults as default_views
 
+from apps.products.views import home_view
 
 urlpatterns = (
         [
-            path("", include("apps.products.urls")),
-            # path("admin/", admin.site.urls),
+            path("", home_view, name="home"),
             path(settings.ADMIN_URL, admin.site.urls),
+            path("products/", include("apps.products.urls", namespace="products")),
+            # path("admin/", admin.site.urls),
         ]
         + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
         + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

@@ -1,0 +1,68 @@
+{% extends "products/base.html" %}
+{% load static i18n compress %}
+
+
+{% block base_product %}
+
+
+    <section class="py-8 antialiased dark:bg-gray-900 md:py-16">
+        <div class="mx-auto max-w-screen-xl px-4 2xl:px-0">
+            <div class="flex md:flex-row flex-col items-center justify-between">
+                <div class="basis-2/4 p-5">
+                    <picture>
+                        <img class="w-full"
+                             src="{{ product.image.url }}" alt=""/>
+                    </picture>
+                </div>
+                <div class="basis-2/4 p-5">
+                    <div class="mt-6 sm:mt-8 lg:mt-0">
+                        <h1 class="text-xl font-semibold text-gray-900 dark:text-white sm:text-2xl">
+                            {{ product.name }}
+                        </h1>
+                        <div class="mt-4 sm:flex sm:items-center sm:gap-4">
+                            <p class="text-2xl font-extrabold text-gray-900 dark:text-white sm:text-3xl">
+                                ${{ product.price }}
+                            </p>
+                            <!-- 5 STARTS -->
+                            <div class="mt-2 flex items-center gap-2 sm:mt-0">
+                                <div class="flex items-center gap-1">
+                                    <i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i>
+                                    <i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i>
+                                    <i class="fa-regular fa-star"></i>
+                                </div>
+                                <p class="text-sm font-medium leading-none text-gray-500 dark:text-gray-400">
+                                    (5.0)
+                                </p>
+                                <a class="text-sm font-medium leading-none text-gray-900 underline hover:no-underline dark:text-white"
+                                   href="#">
+                                    345 Reviews
+                                </a>
+                            </div>
+                        </div>
+                        <div class="mt-6 sm:mt-8 sm:flex sm:items-center sm:gap-4">
+                            <a href="#" title=""
+                                class="flex items-center justify-center rounded-lg border border-gray-200 bg-white px-5 text-sm font-medium text-gray-900 py-2.5 hover:text-blue-700 hover:bg-gray-100 focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-100 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white dark:focus:ring-gray-700">
+                                <i class="fa-regular fa-heart"></i>
+                                &nbsp;Añadir a favoritos
+                            </a>
+                            <a href="#" title=""
+                                class="mt-4 flex items-center justify-center rounded-lg px-5 text-sm font-medium text-white bg-blue-700 py-2.5 hover:bg-blue-800 focus:ring-blue-300 focus:outline-none focus:ring-4 dark:bg-blue-600 sm:mt-0 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                <i class="fa-solid fa-cart-shopping"></i>
+                                &nbsp;Agregar al carrito
+                            </a>
+                        </div>
+                        <hr class="my-6 border-gray-200 dark:border-gray-800 md:my-8"/>
+                        <p class="mb-6 text-gray-500 dark:text-gray-400">
+                            {{ product.description }}
+                        </p>
+                        <p class="text-gray-500 dark:text-gray-400">
+                            
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+{% endblock base_product %}

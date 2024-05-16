@@ -21,7 +21,7 @@ READ_DOT_ENV_FILE = env.bool("DJANGO_READ_DOT_ENV_FILE", default=True)
 if READ_DOT_ENV_FILE:
     # OS environment variables take precedence over variables from .env_OLD
     env.read_env(str(BASE_DIR / ".envs/.local/.django"))
-    # env.read_env(str(BASE_DIR / ".envs/.local/.postgres"))
+    env.read_env(str(BASE_DIR / ".envs/.local/.postgres"))
 
 # GENERAL
 # ------------------------------------------------------------------------------
@@ -54,25 +54,18 @@ LOCALE_PATHS = [str(BASE_DIR / "locale")]
 # DATABASES
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#databases
-# DATABASES = {
-#     "default": {
-#         "ENGINE": "django.db.backends.postgresql",
-#         "NAME": env("POSTGRES_DB"),
-#         "USER": env("POSTGRES_USER"),
-#         "PASSWORD": env("POSTGRES_PASSWORD"),
-#         "HOST": env("POSTGRES_HOST"),
-#         "PORT": env("POSTGRES_PORT")
-#     }
-# }
-
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": env("POSTGRES_DB"),
+        "USER": env("POSTGRES_USER"),
+        "PASSWORD": env("POSTGRES_PASSWORD"),
+        "HOST": env("POSTGRES_HOST"),
+        "PORT": env("POSTGRES_PORT")
     }
 }
 
-# DATABASES["default"]["ATOMIC_REQUESTS"] = True
+DATABASES["default"]["ATOMIC_REQUESTS"] = True
 
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
@@ -274,13 +267,12 @@ LOGGING = {
 # django-compressor
 # ------------------------------------------------------------------------------
 # https://django-compressor.readthedocs.io/en/latest/quickstart/#installation
-# INSTALLED_APPS += ["compressor"]
-# STATICFILES_FINDERS += ["compressor.finders.CompressorFinder"]
-# COMPRESS_ENABLED = True
-# COMPRESS_ROOT = str(APPS_DIR / "static")
+INSTALLED_APPS += ["compressor"]
+STATICFILES_FINDERS += ["compressor.finders.CompressorFinder"]
+COMPRESS_ENABLED = True
+COMPRESS_ROOT = str(APPS_DIR / "static")
 
 
 # Your stuff...
 # TODO:
-
 
